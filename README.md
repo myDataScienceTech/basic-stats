@@ -28,3 +28,4 @@ Program features:
 * Computes the mean of the set of numbers.
 * Computes the median of the set of numbers.
 * Computes the maximum of the set of numbers.    
+* Contains the feature to undo the effect of previously added number.
