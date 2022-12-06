@@ -36,6 +36,22 @@ public class BasicStatsModel
     }
 
     /**
+     * Removes the last number from list of numbers
+     *
+     * Post-condition: The last number from the list of numbers is removed.
+     *
+     * @exception IllegalArgumentException if the list of numbers is empty.
+     */
+    public void undoNumber() {
+        // Input validation
+        if (this.data == null) {
+            throw new IllegalArgumentException("No number exists to undo");
+        }
+        int len = this.data.size();
+        this.data.remove(len-1);
+        }
+
+    /**
      * Resets the list of numbers.
      *
      * Post-condition: The list of numbers is empty.

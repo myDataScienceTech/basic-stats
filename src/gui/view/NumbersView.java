@@ -2,8 +2,6 @@ package gui.view;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import model.BasicStatsModel;
@@ -29,11 +27,16 @@ public class NumbersView implements View
 	if (model.getArrayDouble().length == 0) {
 	    jtaNumbers.setText("");
 	}
-	// Add number
 	else {
 	    // Update the displayed list of numbers
-	    double num = model.getArrayDouble()[model.getArrayDouble().length - 1];
-	    jtaNumbers.append(num + ",");
+		String numbers = "";
+		int numbers_len = model.getArrayDouble().length;
+		for(int i=0;i<numbers_len;i++){
+			Double num = model.getArrayDouble()[i];
+			numbers += Double.toString(num);
+			numbers += ',';
+		}
+		jtaNumbers.setText(numbers);
 	}
     }
 

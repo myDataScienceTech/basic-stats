@@ -60,6 +60,9 @@ public class BasicStatsGUI implements View
 
 	AddNumberViewController addNumberViewController = new AddNumberViewController(this, jpInput);
 	addView(addNumberViewController);
+
+	UndoNumberViewController undoViewController = new UndoNumberViewController(this, jpInput);
+	addView(undoViewController);
 	
 	JButton jbReset = new JButton("Reset");
 	jbReset.addActionListener(new ActionListener() {
@@ -104,6 +107,12 @@ public class BasicStatsGUI implements View
 
 	update(model);
     }
+
+	public void undoNumber() {
+		model.undoNumber();
+	
+		update(model);
+		}
     
     public void reset() {
 	// Clear the ArrayList and all text fields
