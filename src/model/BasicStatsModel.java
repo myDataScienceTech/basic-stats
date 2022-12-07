@@ -44,7 +44,7 @@ public class BasicStatsModel
      */
     public void undoNumber() {
         // Input validation
-        if (this.data == null) {
+        if (this.data.isEmpty()) {
             throw new IllegalArgumentException("No number exists to undo");
         }
         int len = this.data.size();

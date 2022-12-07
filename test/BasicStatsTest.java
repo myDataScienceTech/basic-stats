@@ -1,11 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Arrays;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
 import gui.BasicStats;
 import gui.BasicStatsGUI;
 import model.BasicStatsModel;
@@ -28,7 +27,30 @@ public class BasicStatsTest {
 	this.model = null;
 	this.gui = null;
     }
+
+    @Test()
+    public void testUndoButton() {
+        model.addNumber(1.0);
+        model.addNumber(2.0);
+        double[] withoutUndo = model.getArrayDouble();
+        model.undoNumber();
+        double[] withUndo = model.getArrayDouble();
+        double[] withUndoCheck = Arrays.copyOf(withoutUndo, withoutUndo.length-1);
+        assertArrayEquals(withUndo, withUndoCheck, 0);
+    }
     
+    @Test(expected=IllegalArgumentException.class)
+    public void testUndoInitialConfiguration() {
+        // Initial State
+        this.gui.undoNumber();
+        
+        //Reset State
+        model.addNumber(1.0);
+        model.reset();
+
+        this.gui.undoNumber();
+    }
+
     @Test(expected=IllegalArgumentException.class)
     public void testModelAddNumberInputValidationFails() {
 	// Perform setup and check pre-conditions
@@ -107,6 +129,7 @@ public class BasicStatsTest {
 	expected.add("" + BasicStats.maximum(modelData));
 	expected.add("" + num + ",");
 	expected.add("");
+    expected.add("");
 	assertEquals(expected.toString(), gui.getStringValue());
 	// Call the unit under test
 	gui.reset();
