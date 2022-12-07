@@ -3,6 +3,8 @@
 A Java-based implementation for descriptive statistics. This
 implementation is merely intended to be used in the CS520/620 course.
 
+Collaborators: Amulya Chetlapalli, Snehal Thakur, Sakshi Bhalerao
+
 ### How to build and run (from Terminal):
 
 1. Make sure that you have Apache Ant installed. Run each ant command in the basic-stats folder, which contains the `build.xml` build file.
